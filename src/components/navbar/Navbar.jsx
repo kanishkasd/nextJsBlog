@@ -48,7 +48,7 @@ const Navbar = () => {
             {link.title}
           </Link>
         ))}
-        <button>Logout</button>
+        <button className={styles.logout}>Logout</button>
       </div>
     </div>
   );
