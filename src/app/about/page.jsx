@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
+import Button from "@/components/Button/Button";
 
 const About = () => {
   return (
@@ -12,15 +13,15 @@ const About = () => {
           alt=""
           className={styles.img}
         />
-        <div className="imgText">
-          <h1 className="imageTitle">Digital Storytellers</h1>
-          <h2 className="imageDesc">
+        <div className={styles.imgText}>
+          <h1 className={styles.imgTitle}>Digital Storytellers</h1>
+          <h2 className={styles.imgDesc}>
             Handcrafting award winning digital experience
           </h2>
         </div>
       </div>
-      <div className="textContainer">
-        <div className={styles.item}>
+      <div className={styles.textContainer}>
+        <div className={styles.items}>
           <h1 className={styles.title}>Who Are We? </h1>
           <p className={styles.desc}>
             {" "}
@@ -38,7 +39,7 @@ const About = () => {
             officiis voluptatum quo ea eveniet?
           </p>
         </div>
-        <div className={styles.item}>
+        <div className={styles.items}>
           <h1 className={styles.title}>What We Do?</h1>
           <p className={styles.desc}>
             {" "}
@@ -54,7 +55,7 @@ const About = () => {
             <br />
             <br /> - Mobile Apps
           </p>
-          <button url="/contact" text="Contact" />
+          <Button url="/contact" text="Contact" />
         </div>
       </div>
     </div>
