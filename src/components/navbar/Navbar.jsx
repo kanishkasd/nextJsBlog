@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import styles from "./navbar.module.css";
+import DarkmodeToggle from "../DarkmodeToggle/DarkmodeToggle";
 
 const links = [
   {
@@ -43,6 +44,7 @@ const Navbar = () => {
         Pilma
       </Link>
       <div className={styles.links}>
+        <DarkmodeToggle />
         {links.map((link) => (
           <Link key={link.id} href={link.url} className={styles.link}>
             {link.title}
