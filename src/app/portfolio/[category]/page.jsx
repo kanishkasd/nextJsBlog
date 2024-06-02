@@ -1,41 +1,35 @@
 import Button from "@/components/Button/Button";
 import styles from "./page.module.css";
 import Image from "next/image";
+import { items } from "./data";
+import { notFound } from "next/navigation";
+
+const getData = (cat) => {
+  const data = items[cat];
+
+  if (data) {
+    return data;
+  }
+  return notFound();
+};
+
 const Category = ({ params }) => {
-  console.log(params);
+  const data = getData(params.category);
   return (
     <div className={styles.container}>
       <h1 className={styles.cateTitle}>{params.category}</h1>
-      <div className={styles.item}>
-        <div className={styles.content}>
-          <h1 className={styles.title}>Test</h1>
-          <p className={styles.desc}>Desc</p>
-          <Button text="See more" url="#" />
+      {data.map((item) => (
+        <div className={styles.item} key={item.id}>
+          <div className={styles.content}>
+            <h1 className={styles.title}>{item.title}</h1>
+            <p className={styles.desc}>{item.desc}</p>
+            <Button text="See more" url="#" />
+          </div>
+          <div className={styles.imgContainer}>
+            <Image className={styles.img} src={item.image} alt="" fill={true} />
+          </div>
         </div>
-        <div className={styles.imgContainer}>
-          <Image
-            className={styles.img}
-            src="https://images.pexels.com/photos/23644605/pexels-photo-23644605/free-photo-of-a-woman-standing-by-the-water-in-front-of-houses.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-            alt=""
-            fill={true}
-          />
-        </div>
-      </div>
-      <div className={styles.item}>
-        <div className={styles.content}>
-          <h1 className={styles.title}>Test</h1>
-          <p className={styles.desc}>Desc</p>
-          <Button text="See more" url="#" />
-        </div>
-        <div className={styles.imgContainer}>
-          <Image
-            className={styles.img}
-            src="https://images.pexels.com/photos/7566369/pexels-photo-7566369.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-            alt=""
-            fill={true}
-          />
-        </div>
-      </div>
+      ))}
     </div>
   );
 };
